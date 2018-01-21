@@ -61,3 +61,62 @@ void kuaipai (int zuo,int you)
     return;
 
 }
+
+
+之前写的快排结构体：
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct student{
+		int chenji;
+		char name[10];
+	}a[100],gg,temp;
+
+void kp(int left,int right);
+int main() 
+      {
+	
+	   int i,n=5;
+	  for(i=1;i<=n;i++)
+	  {
+		scanf("%d%s",&a[i].chenji,a[i].name);
+	  }
+	  kp(1,5);
+	  for(i=1;i<=n;i++)
+	  {
+		printf("%d%s",a[i].chenji,a[i].name);
+	  }
+	    return 0;
+      }
+void kp(int left,int right)
+{
+	int i,j,n;
+	if(left>right)
+	{
+		return;
+	}
+	i=left;j=right;temp.chenji=a[left].chenji;
+	while(i!=j)
+    {
+    	while(temp.chenji<=a[j].chenji&&i<j)
+    	{
+    		j--;
+		}
+		while(temp.chenji>=a[i].chenji&&i<j)
+		{
+			i++;
+		}
+		if(i<j)
+		{
+			gg=a[i];a[i]=a[j];a[j]=gg;
+		}
+		
+	}
+	
+	temp=a[left];a[left]=a[i];a[i]=temp;
+		kp(left,i-1);
+		kp(i+1,right);
+	return;
+}
