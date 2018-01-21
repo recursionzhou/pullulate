@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+/*我为从小到大排序*/
+int a[100];
+void kuaipai(int zuo,int yuo);
+int main()
+{
+
+    int i,j,n;
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+
+        scanf("%d",&a[i]);
+    }
+   kuaipai(1,n);
+   for(i=1;i<=n;i++)
+   {
+
+       printf("%d      ",a[i]);
+   }
+
+
+    return 0;
+}
+void kuaipai (int zuo,int you)
+{
+   int i,j,gh,k;
+    if(zuo>you)            /*当你递推过程中到达为2个数时，用来结束递推；*/
+   {
+
+       return;
+   }
+    gh=a[zuo];
+    i=zuo;
+    j=you;
+    while(i!=j)
+    {
+        while(a[j]>=gh&&i<j)    /* 注意！ 一定得要是你作为比较数的另一方向先进行操作，例如本操作，为了保证我的a[i]与gh交换时，a[i]是你想要的较小的数*/
+        {
+           j--;
+
+        }
+        while(a[i]<=gh&&i<j)
+        {
+          i++;
+
+        }
+
+        if(i<j)
+        {
+            k=a[i];a[i]=a[j];a[j]=k;
+        }
+    }
+    a[zuo]=a[i];
+    a[i]=gh;
+    
+    /*下面是递推的过程，不断把数组分为俩部分进行排序*/
+    kuaipai(zuo,i-1);
+    kuaipai(i+1,you);
+    return;
+
+}
