@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+/*没啥好解释的=-=呵呵*/
+
+
+
+
+
+int main(int argc, char *argv[])
+
+ {
+
+ 	/* 数据范围是1到100*/
+
+	  
+
+	int gh[101],i,j,t,n;
+
+	for(i=0;i<=100;i++)
+
+	{
+
+		gh[i]=0; 
+
+	}  
+
+	scanf("%d",&n);
+
+	for(i=1;i<=n;i++)
+
+	{
+
+		scanf("%d",&t);
+
+		gh[t]++; 
+
+		
+
+	}
+
+	for(i=100;i>=0;i--)
+
+	{
+
+		for(j=1;j<=gh[i];j++)
+
+		{
+
+			printf("%d",i); 
+
+		}
+
+	}
+
+	return 0;
+
+}
