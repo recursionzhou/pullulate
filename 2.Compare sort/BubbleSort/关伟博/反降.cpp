@@ -8,17 +8,17 @@ main()
 	{
 		scanf("%d",&a[i]);
 	}
-	for(j=0;j<n-1;j++)
+	for(j=0;j<n;j++)
 	{
 		k=0;
-		for(i=0;i<n-j-1;i++)
+		for(i=n-1;i>j;i--)
 		{
-			if(a[i]<a[i+1])
+			if(a[i]>a[i-1])
 			{
 				t=a[i];
-				a[i]=a[i+1];
-				a[i+1]=t;
-				k=1;				
+				a[i]=a[i-1];
+				a[i-1]=t;
+				k=1;
 			}
 		}
 		if(k==0)
