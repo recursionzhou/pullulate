@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+int a[100];
+void gh1(int low ,int high);
+int main()
+{
+    int n;
+    int k;
+    int i;
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+
+        scanf("%d",&a[i]);
+    }
+    for(i=n/2;i>=1;i--)
+    {
+        gh1(i,n);                     /*在进行堆排序之前，首先把数组变成左右树全是大小堆的形式！！！！*/
+    }
+    for(i=n;i>=2;i--)
+    {
+        k=a[1];a[1]=a[i];a[i]=k;      /*每次把最值的数字放在最后，这是是有序的数组*/
+        gh1(1,i-1);                   /*对没有序的数组挑选最值的数*/
+    }
+ for(i=1;i<=n;i++)
+    {
+
+        printf("%d",a[i]);
+    }
+    return 0;
+}
+void gh1(int low ,int high)
+{
+    int i=low;int j=2*i;
+    int temp=a[i];
+    while(j<=high)
+    {
+        if(j<high&&a[j]<a[j+1])
+        {
+            j++;
+        }
+        if(temp<a[j])
+
+        {
+            a[i]=a[j];i=j;
+            j=2*i;/*！！！！！！为了当你的子树比你标准数大时，接着进行对子树的子树与标准数进行=比较*/
+        }
+        else
+
+        {
+            break;
+        }
+        a[i]=temp;
+    }
+    return;
+}
+
